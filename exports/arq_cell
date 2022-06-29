@@ -2,8 +2,8 @@
 
 # save command line arguments
 data_file=$1
-query_id=$2
-query_description=$3
+cell_id=$2
+cell_description=$3
 
 if [[ -n REPRO_DEMO_TMP_DIRNAME ]] ; then
     tmp_dir=${REPRO_DEMO_TMP_DIRNAME}
@@ -13,27 +13,24 @@ else
 fi
 
 # define names of query and query result files
-query_file=${REPRO_DEMO_TMP_DIRNAME}/${query_id}.rq
-result_file=${REPRO_DEMO_TMP_DIRNAME}/${query_id}.txt
+cell_code=${REPRO_DEMO_TMP_DIRNAME}/${cell_id}.rq
+cell_output=${REPRO_DEMO_TMP_DIRNAME}/${cell_id}.txt
 
-# copy query from stdin to the query file
-printf "# ${query_description}\n\n" > ${query_file}
-
+# copy stdin to the cell code file
+cat /dev/null > ${cell_code}
 IFS=''; while read line
 do
-    printf "$line\n" >> ${query_file}
+    printf "$line\n" >> ${cell_code}
 done
 
 # execute the query on the given data file and save results
-java -cp "${JENA_CLASSPATH}" arq.sparql --syntax arq --data ${data_file} --query ${query_file} > ${result_file}
+java -cp "${JENA_CLASSPATH}" arq.sparql --syntax arq --data ${data_file} --query ${cell_code} > ${cell_output}
 
 # print the query results
+echo "============================================ ARQ CELL ${cell_id} =============================================="
+cat ${cell_code}
+echo "--------------------------------------------- OUTPUTS -------------------------------------------------"
+cat ${cell_output}
+echo "-------------------------------------------------------------------------------------------------------"
 echo
-echo "**************************** QUERY ${query_id} **********************************"
-echo
-cat ${query_file}
-echo
-echo "--------------------- RESULTS FOR QUERY ${query_id}------------------------------"
-echo
-cat ${result_file}
 echo
