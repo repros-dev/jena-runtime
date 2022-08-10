@@ -1,0 +1,18 @@
+I MESG Initialized REPRO logging system and macros
+I MESG Initializing REPRO session
+I MESG Building PATH variable
+I MESG Skipping rest of session initialization because REPRO_DEFER_INIT is set to 'true'
+I MESG Resetting REPRO
+I MESG Resetting all modules
+I MESG Resetting the 'repro' module
+I MESG Re-initializing trim files for module 'repro'
+I MESG Resetting the 'jena-runtime' module
+I MESG Re-initializing trim files for module 'jena-runtime'
+I MESG Resetting the 'java-runtime' module
+I MESG Re-initializing trim files for module 'java-runtime'
+I MESG Resetting the 'shell-notebook' module
+I MESG Re-initializing trim files for module 'shell-notebook'
+I MESG Ensuring other files listed in the 'shell-notebook' module trim manifest are in the module trim directory (/mnt/jena-runtime/.shell-notebook)
+I MESG Copying trim file Makefile.demo-runner from /home/repro/repro-modules/shell-notebook-master to /mnt/jena-runtime/.shell-notebook
+I MESG Resetting the REPRO target mapping file (/mnt/jena-runtime/.repro/repro-targets)
+I MESG Installing a default (empty) target mapping file to /mnt/jena-runtime/.repro/repro-targets
